@@ -14,8 +14,6 @@
 #define  botao  (1<<3)
 boolean  bt1_f = 0x00; //variavel para tratar debounce
 
-#define pino5V 13 // Define o pino 13 como "pino5V"
-
 int Brilho = 0;
 int Leitura = 0;
 int LeituraAnterior = 0;
@@ -47,9 +45,7 @@ void setup()
   lcd.begin (16,2); //SETA A QUANTIDADE DE COLUNAS(16) E O NÚMERO DE LINHAS(2) DO DISPLAY
   lcd.setBacklight(HIGH); //LIGA O BACKLIGHT (LUZ DE FUNDO)
   pinMode(AnalogUmidade, INPUT);
-  pinMode(pino5V, OUTPUT); // Declara o pino5V como Saída
   pinMode(pinoRele, OUTPUT); // Declara o pinoRele como Saída
-  digitalWrite(pino5V, HIGH); // Põem o pino5V em estado Alto = 5V
   pinMode(pino_led_vermelho, OUTPUT);
   pinMode(pino_led_amarelo, OUTPUT);
   pinMode(pino_led_verde, OUTPUT);
