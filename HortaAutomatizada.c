@@ -32,7 +32,7 @@ unsigned long previousMillisTemperatura = 0;
 unsigned long previousMillisLuminosidade = 0;
 unsigned long previousMillisUmidade = 0;
 unsigned long previousMillisRega = 0;
-//Intervalo de tempo entre acionamentos do led (em milisegundos)
+//Intervalo de tempo entre acionamentos do lcd (em milisegundos)
 const long intervaloUmidade = 6000;
 const long intervaloTemperatura = 4000;
 const long intervaloLuminosidade = 2000;
@@ -159,15 +159,18 @@ void loop()
   
    if (umidade > umidade_limite ) 
    { //Se o valor analógico lido for maior que o pré-estabelecido para rega
-      digitalWrite(pinoRele, HIGH); // Altera o estado do pinoRele para nível Baixo
-      //Executa a cada 1 segundo
-    if(millis() - timer > intervaloRega)
+      digitalWrite(pinoRele, HIGH); // Altera o estado do pinoRele para nível alto
+    if(millis() - timer > intervaloRega && umidade < umidade_limite)
      {
        apaga_leds();
        digitalWrite(pino_led_amarelo, HIGH);
        digitalWrite(pinoRele, LOW); // Altera o estado do pinoRele para nível Baixo  
        timer = millis();         //Atualiza a referência
       }
+    }
+    else
+    {
+      digitalWrite(pinoRele, LOW);
     }
 }
  // ------------------------------ FIM SENSOR DE UMIDADE -------------------------------------------------------//}
